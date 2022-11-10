@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="561.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.LoginFormController">
    <children>
-      <AnchorPane layoutY="1.0" prefHeight="561.0" prefWidth="495.0" style="-fx-background-color: C2D8F7;">
+      <AnchorPane fx:id="loginFormContext" layoutY="1.0" prefHeight="561.0" prefWidth="495.0" style="-fx-background-color: C2D8F7;">
          <children>
             <AnchorPane layoutX="66.0" layoutY="63.0" prefHeight="435.0" prefWidth="444.0" style="-fx-background-color: #F5F5F4;">
                <children>
@@ -47,7 +47,7 @@
                   <Separator layoutX="61.0" layoutY="292.0" prefHeight="3.0" prefWidth="131.0" />
                   <Separator layoutX="222.0" layoutY="291.0" prefHeight="3.0" prefWidth="124.0" />
                   <Label layoutX="199.0" layoutY="284.0" prefHeight="17.0" prefWidth="26.0" text="OR" />
-                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="312.0" prefHeight="38.0" prefWidth="282.0" style="-fx-background-color: #34495E;" text="Create an Account" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="312.0" onAction="#createAnAccountOnAction" prefHeight="38.0" prefWidth="282.0" style="-fx-background-color: #34495E;" text="Create an Account" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
