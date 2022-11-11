@@ -20,11 +20,12 @@ public class LoginFormController {
     public JFXPasswordField txtPassword;
 
     public void createAnAccountOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("SignUpForm");
+        setUi("SignUpForm", "SignUp Form");
     }
 
-    private void setUi(String location) throws IOException {
+    private void setUi(String location, String title) throws IOException {
         Stage window = (Stage)loginFormContext.getScene().getWindow();
+        window.setTitle(title);
         window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/"+location+".fxml"))));
     }
 
@@ -39,7 +40,7 @@ public class LoginFormController {
                 //check passwords
                 //if correct => redirect to the dashboard otherwise the system must show an error
                 if (u.getPassword().equals(Password)){ /*we must encrypt them*/
-                    setUi("DashBoardForm");
+                    setUi("DashBoardForm", u.getEmail());
                 }else{
                     new Alert(Alert.AlertType.WARNING, "Password is Incorrect!").show();
                 }

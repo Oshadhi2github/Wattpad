@@ -35,7 +35,7 @@ public class SignUpFormController {
             new Alert(Alert.AlertType.CONFIRMATION, "User Registered!").show();
             clearFields();
             Thread.sleep(2000); // wait 2 seconds
-            setUi("DashBoardForm");
+            setUi("DashBoardForm", u.getEmail());
         } else {
             new Alert(Alert.AlertType.WARNING, "Already exists!, Try Again!").show();
 
@@ -57,12 +57,13 @@ public class SignUpFormController {
     }
 
 
-    private void setUi(String location) throws IOException {
+    private void setUi(String location, String title) throws IOException {
         Stage window = (Stage)signupFormContext.getScene().getWindow();
+        window.setTitle(title);
         window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/"+location+".fxml"))));
     }
 
     public void alreadyHaveAnAccountOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("LoginForm");
+       setUi("LoginForm", "Login Form");
     }
 }
