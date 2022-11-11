@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.SignUpFormController">
+<AnchorPane fx:id="signupFormContext" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.SignUpFormController">
    <children>
       <AnchorPane layoutX="-3.0" prefHeight="572.0" prefWidth="522.0" style="-fx-background-color: C2D8F7;">
          <children>
@@ -49,7 +48,7 @@
                   <Separator layoutX="61.0" layoutY="392.0" prefHeight="3.0" prefWidth="131.0" />
                   <Separator layoutX="222.0" layoutY="391.0" prefHeight="3.0" prefWidth="124.0" />
                   <Label layoutX="199.0" layoutY="384.0" prefHeight="17.0" prefWidth="26.0" text="OR" />
-                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="422.0" prefHeight="38.0" prefWidth="282.0" style="-fx-background-color: #34495E;" text="Already have an Account" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="422.0" onAction="#alreadyHaveAnAccountOnAction" prefHeight="38.0" prefWidth="282.0" style="-fx-background-color: #34495E;" text="Already have an Account" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
