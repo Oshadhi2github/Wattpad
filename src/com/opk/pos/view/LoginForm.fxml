@@ -27,16 +27,16 @@
                         <Font name="Gadugi" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField labelFloat="true" layoutX="65.0" layoutY="127.0" prefHeight="25.0" prefWidth="282.0" promptText="User Name">
+                  <JFXTextField fx:id="txtUserName" labelFloat="true" layoutX="65.0" layoutY="127.0" prefHeight="25.0" prefWidth="282.0" promptText="User Name">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></JFXTextField>
-                  <JFXPasswordField labelFloat="true" layoutX="65.0" layoutY="180.0" prefHeight="30.0" prefWidth="282.0" promptText="Password">
+                  <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="65.0" layoutY="180.0" prefHeight="30.0" prefWidth="282.0" promptText="Password">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </JFXPasswordField>
-                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="232.0" prefHeight="38.0" prefWidth="282.0" style="-fx-background-color: #0a6bed;" text="Login" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="232.0" onAction="#loginOnAction" prefHeight="38.0" prefWidth="282.0" style="-fx-background-color: #0a6bed;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
