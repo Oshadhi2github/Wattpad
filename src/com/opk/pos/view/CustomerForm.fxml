@@ -35,7 +35,7 @@
          </font>
       </Label>
       <Separator layoutX="310.0" layoutY="29.0" prefHeight="3.0" prefWidth="325.0" />
-      <TextField fx:id="txtId" layoutX="14.0" layoutY="72.0" prefHeight="29.0" prefWidth="121.0" promptText="Customer Id">
+      <TextField fx:id="txtId" editable="false" layoutX="14.0" layoutY="72.0" prefHeight="29.0" prefWidth="121.0" promptText="Customer Id">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
