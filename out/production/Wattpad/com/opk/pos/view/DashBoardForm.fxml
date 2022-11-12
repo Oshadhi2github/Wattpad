@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="526.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.DashBoardFormController">
+<AnchorPane fx:id="dashboardContext" prefHeight="526.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.DashBoardFormController">
    <children>
       <Label layoutX="31.0" layoutY="30.0" text="EasyPOS">
          <font>
@@ -55,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="25.0" onMouseClicked="#openPlaceOrderFormOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../asserts/dashboard/place-order.png" />
                </image>
@@ -75,7 +75,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="8.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="8.0" layoutY="27.0" onMouseClicked="#openProductManagementOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../asserts/dashboard/products.png" />
                </image>
@@ -105,7 +105,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="2.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="2.0" layoutY="23.0" onMouseClicked="#openStatisticsOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../asserts/dashboard/statistics.png" />
                </image>
@@ -115,7 +115,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="51.0" layoutY="108.0" onMouseClicked="#openCustomerFormOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asserts/dashboard/customer.png" />
          </image>
@@ -123,7 +123,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="175.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="175.0" layoutY="335.0" onMouseClicked="#openOrderDetailsOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asserts/dashboard/order-details.png" />
          </image>
