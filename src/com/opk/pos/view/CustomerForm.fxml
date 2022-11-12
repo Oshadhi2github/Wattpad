@@ -68,13 +68,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView layoutX="16.0" layoutY="162.0" prefHeight="319.0" prefWidth="756.0">
+      <TableView fx:id="tblCustomer" layoutX="16.0" layoutY="162.0" prefHeight="319.0" prefWidth="756.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Customer Id" />
-          <TableColumn prefWidth="161.0" text="Name" />
-            <TableColumn prefWidth="235.0" text="Address" />
-            <TableColumn prefWidth="139.0" text="Salary" />
-            <TableColumn prefWidth="138.0" text="Option" />
+          <TableColumn fx:id="colCustomerId" prefWidth="75.0" text="Customer Id" />
+          <TableColumn fx:id="colCustomerName" prefWidth="161.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="235.0" text="Address" />
+            <TableColumn fx:id="colSalary" prefWidth="139.0" text="Salary" />
+            <TableColumn fx:id="colOption" prefWidth="138.0" text="Option" />
         </columns>
       </TableView>
    </children>
