@@ -14,8 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CustomerFormController {
     public AnchorPane customerFormContext;
@@ -118,6 +120,17 @@ public class CustomerFormController {
                 Button btn = new Button("Delete");
                 CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn);
                 obList.add(tm);
+
+                btn.setOnAction(event -> {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?",ButtonType.YES, ButtonType.NO);
+                    Optional<ButtonType> val = alert.showAndWait();
+                    if (val.get()==ButtonType.YES){
+                        Database.customerTable.remove(c);
+                        new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted").show();
+                        setTableData();
+
+                    }
+                });
             }
             tblCustomer.setItems(obList);
         }
