@@ -32,9 +32,12 @@ public class CustomerFormController {
     public TableColumn colOption;
     public TableView<CustomerTM> tblCustomer;
     public JFXButton btnSaveUpdate;
+    public TextField txtSearch;
+
+    private String searchText="";
 
     public void initialize() {
-        setTableData();
+        setTableData(searchText);
         setColCustomerId();
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -48,6 +51,11 @@ public class CustomerFormController {
             if (null != newValue) {
                 setCustomerData(newValue);
             }
+        });
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchText=newValue;
+            setTableData(searchText);
         });
         //========listeners=========
     }
@@ -82,7 +90,7 @@ public class CustomerFormController {
             //save
             if (Database.customerTable.add(customer)) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer Saved!").show();
-                setTableData();
+                setTableData(searchText);
                 setColCustomerId();
                 clear();
             } else {
@@ -95,7 +103,7 @@ public class CustomerFormController {
                     c.setAddress(txtAddress.getText());
                     c.setSalary(Double.parseDouble(txtSalary.getText()));
                     new Alert(Alert.AlertType.CONFIRMATION, "Customer Updated!").show();
-                    setTableData();
+                    setTableData(searchText);
                     clear();
                 }
             }
@@ -112,25 +120,28 @@ public class CustomerFormController {
         }
 
 
-        private void setTableData() {
+        private void setTableData(String text) {
             ArrayList<Customer> customerList = Database.customerTable;
             ObservableList<CustomerTM> obList = FXCollections.observableArrayList();
             for (Customer c : customerList
             ) {
-                Button btn = new Button("Delete");
-                CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn);
-                obList.add(tm);
+                if (c.getName().contains(text) || c.getAddress().contains(text)){
+                    Button btn = new Button("Delete");
+                    CustomerTM tm = new CustomerTM(c.getId(), c.getName(), c.getAddress(), c.getSalary(), btn);
+                    obList.add(tm);
 
-                btn.setOnAction(event -> {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?",ButtonType.YES, ButtonType.NO);
-                    Optional<ButtonType> val = alert.showAndWait();
-                    if (val.get()==ButtonType.YES){
-                        Database.customerTable.remove(c);
-                        new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted").show();
-                        setTableData();
+                    btn.setOnAction(event -> {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?",ButtonType.YES, ButtonType.NO);
+                        Optional<ButtonType> val = alert.showAndWait();
+                        if (val.get()==ButtonType.YES){
+                            Database.customerTable.remove(c);
+                            new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted").show();
+                            setTableData(searchText);
 
-                    }
-                });
+                        }
+                    });
+                }
+
             }
             tblCustomer.setItems(obList);
         }
