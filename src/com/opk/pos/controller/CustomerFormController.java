@@ -174,7 +174,8 @@ public class CustomerFormController {
 
 
     public void newCustomerOnAction(ActionEvent actionEvent) {
-    clear();
+
+        clear();
     }
 }
 

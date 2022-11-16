@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.opk.pos.controller.ProductFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="productContext" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.ProductFormController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="24.0" onAction="#backToHomeOnAction" style="-fx-background-color: #27ae60;" text="Back to home" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="659.0" layoutY="24.0" onAction="#newProductOnAction" style="-fx-background-color: #34495e;" text="+ New Product" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="141.0" layoutY="30.0" text="Product management" textFill="#7c0000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="320.0" layoutY="39.0" prefHeight="3.0" prefWidth="325.0" />
+      <TextField fx:id="txtCode" editable="false" layoutX="24.0" layoutY="82.0" prefHeight="29.0" prefWidth="121.0" promptText="Product Code">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtDescription" layoutX="162.0" layoutY="82.0" prefHeight="29.0" prefWidth="276.0" promptText="Description">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtUnitPrice" layoutX="444.0" layoutY="82.0" prefHeight="29.0" prefWidth="179.0" promptText="Unit price">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtQtyOnHand" layoutX="634.0" layoutY="82.0" prefHeight="29.0" prefWidth="141.0" promptText="QTY On Hand">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtSearch" layoutX="24.0" layoutY="127.0" prefHeight="29.0" prefWidth="402.0" promptText="Search here">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="btnSaveUpdate" buttonType="RAISED" layoutX="639.0" layoutY="127.0" onAction="#saveUpdateOnAction" prefHeight="29.0" prefWidth="141.0" style="-fx-background-color: #2980b9;" text="Save Product" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblProducts" layoutX="26.0" layoutY="172.0" prefHeight="310.0" prefWidth="756.0">
+         <columns>
+            <TableColumn fx:id="colProductCode" prefWidth="92.0" text="Product Code" />
+            <TableColumn fx:id="colProductDescription" prefWidth="203.0" text="Description" />
+            <TableColumn fx:id="colProductUnitPrice" prefWidth="176.0" text="Unit price" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="139.0" text="QTY On Hand" />
+            <TableColumn fx:id="colOption" prefWidth="138.0" text="Option" />
+         </columns>
+      </TableView>
+   </children>
 </AnchorPane>
