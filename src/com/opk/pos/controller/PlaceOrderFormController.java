@@ -1,5 +1,6 @@
 package com.opk.pos.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.opk.pos.db.Database;
 import com.opk.pos.model.Customer;
 import com.opk.pos.model.Product;
@@ -42,6 +43,7 @@ public class PlaceOrderFormController {
     public TableColumn colQty;
     public TableColumn colTotal;
     public TableColumn colOption;
+    public JFXButton addToCartButton;
 
     public void initialize(){
 
@@ -72,6 +74,7 @@ public class PlaceOrderFormController {
     }
 
     private void setProductData(String code) {
+        txtQty.requestFocus();
         Product product = Database.productTable.stream().filter(e -> e.getCode().equals(code)).findFirst().orElse(null);
         if (product!=null){
             txtDescription.setText(product.getDescription());
@@ -125,24 +128,42 @@ public class PlaceOrderFormController {
         double total = qty* unitPrice;
 
         Button btn = new Button("Remove");
+        CartTM tm = new CartTM(cmbItemCodes.getValue(),
+                txtDescription.getText(),unitPrice,qty,total,btn);
 
         CartTM existTm = isExists(cmbItemCodes.getValue());
+
         if (existTm!=null) {
             existTm.setQty(existTm.getQty() + qty);
             existTm.setTotal(existTm.getTotal() + total);
         }else{
-            CartTM tm = new CartTM(cmbItemCodes.getValue(),
-                    txtDescription.getText(),unitPrice,qty,total,btn);
+
 
             tmList.add(tm);
         }
 
+        btn.setOnAction(e->{
+            tmList.remove(tm);
+            tblCart.refresh();
+            setTotalAndCount();
+        });
 
 
         tblCart.setItems(tmList);
         tblCart.refresh();
+        setTotalAndCount();
+        clearFields();
 
     }
+
+    private void clearFields() {
+        txtDescription.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
+        txtQty.clear();
+        cmbItemCodes.requestFocus();
+    }
+
     private  CartTM isExists(String id){
         return tmList.stream().filter(e->e.getCode().equals(id)).findFirst().orElse(null);
     }
@@ -161,5 +182,9 @@ public class PlaceOrderFormController {
         }
         txtOrderTotal.setText(String.valueOf(cost));
         txtItemCount.setText(String.valueOf(tmList.size()));
+    }
+
+    public void addToCartData(ActionEvent actionEvent) {
+        addToCartButton.fire();
     }
 }

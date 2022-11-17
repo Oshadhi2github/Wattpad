@@ -29,7 +29,7 @@
       <Separator layoutX="259.0" layoutY="48.0" prefHeight="0.0" prefWidth="481.0" />
       <TextField fx:id="txtOrderId" disable="true" editable="false" layoutX="65.0" layoutY="90.0" promptText="Order Id" />
       <TextField fx:id="txtOrderDate" disable="true" editable="false" layoutX="225.0" layoutY="90.0" promptText="Date" />
-      <TextField fx:id="txtOrderTotal" disable="true" editable="false" layoutX="385.0" layoutY="90.0" promptText="Total Cost" />
+      <TextField fx:id="txtOrderTotal" disable="true" editable="false" layoutX="385.0" layoutY="90.0" promptText="Total Cost" text="0" />
       <TextField fx:id="txtItemCount" disable="true" editable="false" layoutX="545.0" layoutY="90.0" promptText="Item Count" />
       <Separator layoutX="159.0" layoutY="128.0" prefHeight="0.0" prefWidth="481.0" />
       <ComboBox fx:id="cmbCustomerCodes" layoutX="24.0" layoutY="140.0" prefWidth="150.0" promptText="Customer" />
@@ -48,8 +48,8 @@
       <TextField fx:id="txtDescription" layoutX="195.0" layoutY="185.0" prefHeight="25.0" prefWidth="220.0" promptText="Description" />
       <TextField fx:id="txtUnitPrice" layoutX="425.0" layoutY="185.0" prefHeight="25.0" prefWidth="118.0" promptText="Unit Price" />
       <TextField fx:id="txtQtyOnHand" layoutX="555.0" layoutY="185.0" prefHeight="25.0" prefWidth="118.0" promptText=" QTY On Hand" />
-      <TextField fx:id="txtQty" layoutX="681.0" layoutY="185.0" prefHeight="25.0" prefWidth="91.0" promptText="QTY" />
-      <JFXButton buttonType="RAISED" layoutX="682.0" layoutY="217.0" onAction="#addToCart" style="-fx-background-color: #34495e;" text="Add to Cart" textFill="WHITE">
+      <TextField fx:id="txtQty" layoutX="681.0" layoutY="185.0" onAction="#addToCartData" prefHeight="25.0" prefWidth="91.0" promptText="QTY" />
+      <JFXButton fx:id="addToCartButton" buttonType="RAISED" layoutX="682.0" layoutY="217.0" onAction="#addToCart" style="-fx-background-color: #34495e;" text="Add to Cart" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
