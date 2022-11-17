@@ -127,6 +127,11 @@ public class PlaceOrderFormController {
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
         double total = qty* unitPrice;
 
+        if (!checkQty( qty)){
+            new Alert(Alert.AlertType.WARNING,"Invalid Qty").show();
+            return;
+        }
+
         Button btn = new Button("Remove");
         CartTM tm = new CartTM(cmbItemCodes.getValue(),
                 txtDescription.getText(),unitPrice,qty,total,btn);
@@ -134,6 +139,10 @@ public class PlaceOrderFormController {
         CartTM existTm = isExists(cmbItemCodes.getValue());
 
         if (existTm!=null) {
+            if (!checkQty(existTm.getQty() + qty)){
+                new Alert(Alert.AlertType.WARNING,"Invalid Qty").show();
+                return;
+            }
             existTm.setQty(existTm.getQty() + qty);
             existTm.setTotal(existTm.getTotal() + total);
         }else{
@@ -154,6 +163,14 @@ public class PlaceOrderFormController {
         setTotalAndCount();
         clearFields();
 
+    }
+    private boolean checkQty(int qty){
+        /*if (Integer.parseInt(txtQtyOnHand.getText())<qty){
+            new Alert(Alert.AlertType.WARNING,"Invalid Qty").show();
+            return false; //can't add
+        }
+        return true;//add more*/
+        return Integer.parseInt(txtQtyOnHand.getText())<qty?false:true;
     }
 
     private void clearFields() {
@@ -186,5 +203,9 @@ public class PlaceOrderFormController {
 
     public void addToCartData(ActionEvent actionEvent) {
         addToCartButton.fire();
+    }
+
+    public void newCustomerOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("CustomerForm","Customer Management");
     }
 }
