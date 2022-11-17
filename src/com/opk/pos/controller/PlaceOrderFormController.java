@@ -146,4 +146,20 @@ public class PlaceOrderFormController {
     private  CartTM isExists(String id){
         return tmList.stream().filter(e->e.getCode().equals(id)).findFirst().orElse(null);
     }
+
+    private void setTotalAndCount(){
+        double cost=0;
+        /*txtOrderTotal.setText(String.valueOf(0));
+        tmList.forEach(e->{
+            //txtOrderTotal.setText((Double.parseDouble(txtOrderTotal.getText())+e.getTotal())+"");
+            txtOrderTotal.setText(String.valueOf(Double.parseDouble(txtOrderTotal.getText())+e.getTotal()));
+
+        });*/
+        for (CartTM tm:tmList
+             ) {
+            cost+= tm.getTotal();
+        }
+        txtOrderTotal.setText(String.valueOf(cost));
+        txtItemCount.setText(String.valueOf(tmList.size()));
+    }
 }
