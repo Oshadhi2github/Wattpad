@@ -1,14 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.opk.pos.controller.PlaceOrderFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="512.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opk.pos.controller.PlaceOrderFormController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="24.0" layoutY="34.0" onAction="#backToHomeOnAction" style="-fx-background-color: #27ae60;" text="Back to home" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="151.0" layoutY="40.0" text="Place Order" textFill="#7c0000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="259.0" layoutY="48.0" prefHeight="0.0" prefWidth="481.0" />
+      <TextField layoutX="65.0" layoutY="90.0" promptText="Order Id" />
+      <TextField layoutX="225.0" layoutY="90.0" promptText="Date" />
+      <TextField layoutX="385.0" layoutY="90.0" promptText="Total Cost" />
+      <TextField layoutX="545.0" layoutY="90.0" promptText="Item Count" />
+      <Separator layoutX="159.0" layoutY="128.0" prefHeight="0.0" prefWidth="481.0" />
+      <ComboBox layoutX="24.0" layoutY="140.0" prefWidth="150.0" promptText="Customer" />
+      <TextField layoutX="235.0" layoutY="140.0" promptText="Name" />
+      <TextField layoutX="395.0" layoutY="140.0" prefHeight="25.0" prefWidth="169.0" promptText="Address" />
+      <TextField layoutX="575.0" layoutY="140.0" promptText="Salary" />
+      <JFXButton buttonType="RAISED" layoutX="743.0" layoutY="138.0" onAction="#backToHomeOnAction" style="-fx-background-color: #27ae60;" text="+" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ComboBox layoutX="24.0" layoutY="185.0" prefWidth="150.0" promptText="Item" />
+      <TextField layoutX="195.0" layoutY="185.0" prefHeight="25.0" prefWidth="220.0" promptText="Description" />
+      <TextField layoutX="425.0" layoutY="185.0" prefHeight="25.0" prefWidth="118.0" promptText="Unit Price" />
+      <TextField layoutX="555.0" layoutY="185.0" prefHeight="25.0" prefWidth="118.0" promptText=" QTY On Hand" />
+      <TextField layoutX="681.0" layoutY="185.0" prefHeight="25.0" prefWidth="91.0" promptText="QTY" />
+      <JFXButton buttonType="RAISED" layoutX="682.0" layoutY="217.0" onAction="#backToHomeOnAction" style="-fx-background-color: #34495e;" text="Add to Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView layoutX="23.0" layoutY="255.0" prefHeight="196.0" prefWidth="748.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Code" />
+          <TableColumn prefWidth="159.0" text="Description" />
+            <TableColumn prefWidth="126.0" text="Unit price" />
+            <TableColumn prefWidth="119.0" text="QTY" />
+            <TableColumn prefWidth="130.0" text="Total" />
+            <TableColumn prefWidth="131.0" text="Option" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="21.0" layoutY="467.0" onAction="#backToHomeOnAction" prefHeight="29.0" prefWidth="748.0" style="-fx-background-color: #2980b9;" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
 </AnchorPane>
