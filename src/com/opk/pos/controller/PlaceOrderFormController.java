@@ -126,12 +126,24 @@ public class PlaceOrderFormController {
 
         Button btn = new Button("Remove");
 
-        CartTM tm = new CartTM(cmbItemCodes.getValue(),
-                txtDescription.getText(),unitPrice,qty,total,btn);
+        CartTM existTm = isExists(cmbItemCodes.getValue());
+        if (existTm!=null) {
+            existTm.setQty(existTm.getQty() + qty);
+            existTm.setTotal(existTm.getTotal() + total);
+        }else{
+            CartTM tm = new CartTM(cmbItemCodes.getValue(),
+                    txtDescription.getText(),unitPrice,qty,total,btn);
 
-        tmList.add(tm);
+            tmList.add(tm);
+        }
+
+
 
         tblCart.setItems(tmList);
+        tblCart.refresh();
 
+    }
+    private  CartTM isExists(String id){
+        return tmList.stream().filter(e->e.getCode().equals(id)).findFirst().orElse(null);
     }
 }
