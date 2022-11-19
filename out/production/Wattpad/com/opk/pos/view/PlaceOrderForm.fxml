@@ -36,7 +36,7 @@
       <TextField fx:id="txtName" layoutX="235.0" layoutY="140.0" promptText="Name" />
       <TextField fx:id="txtAddress" layoutX="395.0" layoutY="140.0" prefHeight="25.0" prefWidth="169.0" promptText="Address" />
       <TextField fx:id="txtSalary" layoutX="575.0" layoutY="140.0" promptText="Salary" />
-      <JFXButton buttonType="RAISED" layoutX="743.0" layoutY="138.0" onAction="#backToHomeOnAction" style="-fx-background-color: #27ae60;" text="+" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="743.0" layoutY="138.0" onAction="#newCustomerOnAction" style="-fx-background-color: #27ae60;" text="+" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -67,7 +67,7 @@
             <TableColumn fx:id="colOption" prefWidth="131.0" text="Option" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="21.0" layoutY="467.0" onAction="#backToHomeOnAction" prefHeight="29.0" prefWidth="748.0" style="-fx-background-color: #2980b9;" text="Place Order" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="21.0" layoutY="467.0" onAction="#placeOrderOnAction" prefHeight="29.0" prefWidth="748.0" style="-fx-background-color: #2980b9;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

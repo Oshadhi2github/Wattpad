@@ -67,7 +67,7 @@
             <TableColumn fx:id="colOption" prefWidth="131.0" text="Option" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="21.0" layoutY="467.0" onAction="#backToHomeOnAction" prefHeight="29.0" prefWidth="748.0" style="-fx-background-color: #2980b9;" text="Place Order" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="21.0" layoutY="467.0" onAction="#placeOrderOnAction" prefHeight="29.0" prefWidth="748.0" style="-fx-background-color: #2980b9;" text="Place Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

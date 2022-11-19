@@ -2,7 +2,9 @@ package com.opk.pos.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.opk.pos.db.Database;
+import com.opk.pos.model.CartItem;
 import com.opk.pos.model.Customer;
+import com.opk.pos.model.Order;
 import com.opk.pos.model.Product;
 import com.opk.pos.view.tm.CartTM;
 import javafx.collections.FXCollections;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -57,6 +60,7 @@ public class PlaceOrderFormController {
         loadCustomerIds();
         loadItemCodes();
         setDate();
+        generateOrderId();
 
         //===========Listeners===========
         cmbCustomerCodes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -207,5 +211,76 @@ public class PlaceOrderFormController {
 
     public void newCustomerOnAction(ActionEvent actionEvent) throws IOException {
         setUi("CustomerForm","Customer Management");
+    }
+    private void placeOrder(){
+        ArrayList<CartItem> items= new ArrayList<>();
+        for (CartTM tm:tmList
+             ) {
+            items.add(new CartItem(tm.getCode(), tm.getQty(),tm.getUnitPrice()));
+        }
+        Order order = new Order(txtOrderId.getText(),new Date(),Double.parseDouble(txtOrderTotal.getText()),cmbCustomerCodes.getValue(),items);
+        Database.orderTable.add(order);
+        if (manageQty(items)){
+            new Alert(Alert.AlertType.INFORMATION,"Order Placed!").show();
+            generateOrderId();
+            setFreshUI();
+        }else{
+            //error
+        }
+        //create item array list [all cart data]
+        //create order object
+        //save order
+        //update QTY
+    }
+
+    private void setFreshUI(){
+        cmbCustomerCodes.setValue(null);
+        txtName.clear();
+        txtAddress.clear();
+        txtSalary.clear();
+        txtOrderTotal.setText("0");
+        txtItemCount.setText("");
+
+        tmList.clear();
+        tblCart.refresh();
+    }
+
+    private void generateOrderId() {
+        if (!Database.orderTable.isEmpty()) {
+            Order o = Database.orderTable.get(Database.orderTable.size() - 1);
+            String id = o.getOrderId();
+            //String dataArray[] = id.split("a-z"); // a001 b001
+            String dataArray[] = id.split("[a-z A-Z]"); // A001 b001
+            id = dataArray[1];
+            int oldNumber = Integer.parseInt(id);
+            oldNumber++; // 3
+            if (oldNumber < 9) {
+                txtOrderId.setText("B00" + oldNumber);
+            } else if (oldNumber < 99) {
+                txtOrderId.setText("B0" + oldNumber);
+            } else {
+                txtOrderId.setText("B" + oldNumber);
+            }
+        } else {
+            txtOrderId.setText("B001");
+        }
+    }
+
+    private boolean manageQty(ArrayList<CartItem> items){
+        for (CartItem i:items
+             ) {
+            Product p =Database.productTable.stream().filter(e->e.getCode().equals(i.getCode())).findFirst().orElse(null);
+            if (p!=null){
+                p.setQtyOnHand((p.getQtyOnHand()-i.getQty()));
+            }else{
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    public void placeOrderOnAction(ActionEvent actionEvent) {
+        placeOrder();
     }
 }

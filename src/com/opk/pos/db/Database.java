@@ -1,6 +1,7 @@
 package com.opk.pos.db;
 
 import com.opk.pos.model.Customer;
+import com.opk.pos.model.Order;
 import com.opk.pos.model.Product;
 import com.opk.pos.model.User;
 
@@ -10,6 +11,7 @@ public class Database {
     public static ArrayList<User> userTable = new ArrayList<User>();
     public static ArrayList<Customer> customerTable = new ArrayList<Customer>();
     public static ArrayList<Product> productTable = new ArrayList<Product>();
+    public static ArrayList<Order> orderTable = new ArrayList<Order>();
 
     static {
         customerTable.add(new Customer("C-001","Anne","Colombo",45000));
