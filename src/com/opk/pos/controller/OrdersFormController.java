@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,10 +54,33 @@ public class OrdersFormController {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Deleted").show();
                     loadData();
 
+                    //======================
+
+                    tblOrders.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+                        if (newValue!=null){
+                            try {
+                                openDetailsUi(newValue);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+
+                    }));
+                    //======================
+
                 }
             });
         }
         tblOrders.setItems(tmList);
+    }
+
+    private void openDetailsUi(OrderDetailsTM value) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/OrderDetailsForm.fxml"));
+        Parent parent = fxmlLoader.load();
+        OrderDetailsFormController detailsController = fxmlLoader.getController();
+        detailsController.loadData(value.getOrderId());
+        Stage stage = new Stage();
+        stage.show();
     }
 
     public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
