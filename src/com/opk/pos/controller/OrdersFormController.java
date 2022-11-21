@@ -34,6 +34,21 @@ public class OrdersFormController {
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customer"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
         loadData();
+
+        //======================
+
+        tblOrders.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue!=null){
+                try {
+                    openDetailsUi(newValue);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        }));
+        //======================
+
     }
 
     private void loadData() {
@@ -54,19 +69,6 @@ public class OrdersFormController {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Deleted").show();
                     loadData();
 
-                    //======================
-
-                    tblOrders.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
-                        if (newValue!=null){
-                            try {
-                                openDetailsUi(newValue);
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }
-
-                    }));
-                    //======================
 
                 }
             });
@@ -80,6 +82,7 @@ public class OrdersFormController {
         OrderDetailsFormController detailsController = fxmlLoader.getController();
         detailsController.loadData(value.getOrderId());
         Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
         stage.show();
     }
 
